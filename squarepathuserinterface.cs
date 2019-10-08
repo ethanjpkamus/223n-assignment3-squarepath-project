@@ -21,10 +21,14 @@ public class squarepathuserinterface : Form
       private Label direction_label = new Label();
 
       //circle properties
-      private int x_pos = 0;
-      private int y_pos = 0;
+      private int x_pos = 1400;
+      private int y_pos = 300;
 
-      private enum current_direction{up,down,left,right};
+      //origin position
+      //private const int x0_pos = 1400;
+      //private const int y0_pos = 300;
+
+      private enum current_direction{up,down,left,right,still};
       current_direction direction_indicator = current_direction.down;
 
       private enum current_color {red,gold};
@@ -44,6 +48,7 @@ public class squarepathuserinterface : Form
       //brushes for OnPaint
       private SolidBrush redbrush = new SolidBrush(Color.Red);
       private SolidBrush goldbrush = new SolidBrush(Color.Gold);
+      private SolidBrush blackrectangle = new SolidBrush(Color.Black);
 
       //constructor
       public squarepathuserinterface(){
@@ -66,6 +71,7 @@ public class squarepathuserinterface : Form
             play_pause_button.Text = "Go!";
             reset_button.Text = "Reset";
             exit_button.Text = "Exit";
+            direction_label.Text = "Direction: STILL"
 
             //set sizes
             play_pause_button.Size = new Size(75,30);
@@ -107,13 +113,108 @@ public class squarepathuserinterface : Form
       //methods
       protected override void OnPaint(PaintEventArgs e){
 
+            Graphics graph = e.Graphics;
+
+            graph.DrawRectangle(blackrectangle,100,100,500,300);
+
+            //determine the color of circle
+            switch(color_indicator){
+
+                  case current_color.red:
+                        graph.FillEllipse(redbrush,x_pos,y_pos,50,50);
+                        break;
+
+                  case current_color.gold:
+                        graph.FillEllipse(goldbrush,x_pos,y_pos,50,50);
+                        break;
+            }
+
+            //update label for direction and positions
+            x_pos_label.Text = x_pos.ToString();
+            y_pos_label.Text = y_pos.ToString();
+
+            base.OnPaint(e);
+
       } //end of OnPaint override
 
       protected void update_ui(Object o, ElapsedEventArgs e){
 
+            Invalidate();
+
       } //end of update_ui
 
       protected void update_circle_pos(Object o, ElapsedEventArgs e){
+
+            //calculate the movement of the circle based on its direction
+            switch(current_direction){
+
+                  case direction_indicator.down:
+
+                        //update direction label
+                        direction_label.Text = "Direction: DOWN";
+
+                        //do math
+                        y_pos++;
+
+                        //check if circle reached the bottom of the rectangle
+                        if(y_pos == 600){
+                              current_direction = direction_indicator.left;
+                        }
+                        break;
+
+                  case direction_indicator.left:
+
+                        //update direction label
+                        direction_label.Text = "Direction: LEFT";
+
+                        //do math
+                        x_pos--;
+
+                        //check if circle reached the left side of the rectangle
+                        if(x_pos == 900){
+                              current_direction = direction_indicator.up;
+                        }
+
+                        break;
+
+                  case direction_indicator.up:
+
+                        //update direction label
+                        direction_label.Text = "Direction: UP";
+
+                        //do math
+                        y_pos--;
+
+                        //check if circle is at top of rectangle
+                        if(y_pos == 300){
+                              direction_label = current_direction.right;
+                        }
+
+                        break;
+
+                  case direction_indicator.right:
+
+                        //update direction label
+                        direction_label.Text = "Direction: RIGHT";
+
+                        //do math
+                        x_pos++;
+
+                        //check if circle is back at origin
+                        if(y_pos == 1400){
+
+                        }
+
+
+                        break;
+                  case direction_indicator.still:
+
+                        direction_label.Text = "Direction: STILL";
+                        circle_clock.Enabled = false;
+                        color_indicator = current_color.gold;
+
+                        break;
+            } //end of switch statement
 
       } //end of update_circle_pos
 
