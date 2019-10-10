@@ -25,8 +25,8 @@ public class squarepathuserinterface : Form
       private int y_pos = 300;
 
       //origin position
-      //private const int x0_pos = 1400;
-      //private const int y0_pos = 300;
+      private const int x_og = 1400;
+      private const int y_og = 300;
 
       private enum current_direction{up,down,left,right,still};
       current_direction direction_indicator = current_direction.down;
@@ -220,13 +220,29 @@ public class squarepathuserinterface : Form
 
       protected void update_play_pause(Object o, EventArgs e){
 
+            circle_clock.Enabled = !circle_clock.Enabled;
+
+            if(circle_clock.Enabled){
+                  play_pause_button.Text = "Pause";
+            }
+            else {
+                  play_pause_button.Text = "Play";
+            }
+
       } //end of update_play_pause
 
       protected void update_reset(Object o, EventArgs e){
 
+            circle_clock.Enabled = false;
+
+            x_pos = x_og;
+            y_pos = y_og;
+
       } //end of update_reset
 
       protected void update_exit(Object o, EventArgs e){
+
+            Close();
 
       } //end of update_exit
 
