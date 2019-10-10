@@ -6,7 +6,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Systems.Timers;
+using System.Timers;
 
 public class squarepathuserinterface : Form
 {
@@ -39,8 +39,8 @@ public class squarepathuserinterface : Form
       /* The clock that refreshes the ui will only have one statement in
        * it the methods passed to the event handler which is Invalidate();
        */
-      private static Systems.Timers.Timer ui_clock = new Systems.Timers.Timer();
-      private static Systems.Timers.Timer circle_clock = new Systems.Timers.Timer();
+      private static System.Timers.Timer ui_clock = new Systems.Timers.Timer();
+      private static System.Timers.Timer circle_clock = new Systems.Timers.Timer();
 
       private Size maximum_window_size = new Size(1500,1000);
       private Size minimum_window_size = new Size(1500,1000);
@@ -48,12 +48,12 @@ public class squarepathuserinterface : Form
       //brushes for OnPaint
       private SolidBrush redbrush = new SolidBrush(Color.Red);
       private SolidBrush goldbrush = new SolidBrush(Color.Gold);
-      private SolidBrush blackrectangle = new SolidBrush(Color.Black);
+      private Pen blackrectangle = new Pen(Color.Black);
 
       //constructor
       public squarepathuserinterface(){
 
-            MaximimSize = maximum_window_size;
+            MaximumSize = maximum_window_size;
             MinimumSize = minimum_window_size;
 
             //Timer Intervals
@@ -63,7 +63,7 @@ public class squarepathuserinterface : Form
 
             circle_clock.Interval = 17; //roughly 60 Hz
             circle_clock.Enabled = false;
-            circle.clock.AutoReset = true;
+            circle_clock.AutoReset = true;
 
             //Labels and Buttons
             Text = "Moving Ball Project by: Ethan Kamus";
@@ -71,7 +71,7 @@ public class squarepathuserinterface : Form
             play_pause_button.Text = "Go!";
             reset_button.Text = "Reset";
             exit_button.Text = "Exit";
-            direction_label.Text = "Direction: STILL"
+            direction_label.Text = "Direction: STILL";
 
             //set sizes
             play_pause_button.Size = new Size(75,30);
@@ -146,9 +146,9 @@ public class squarepathuserinterface : Form
       protected void update_circle_pos(Object o, ElapsedEventArgs e){
 
             //calculate the movement of the circle based on its direction
-            switch(current_direction){
+            switch(direction_indicator){
 
-                  case direction_indicator.down:
+                  case current_direction.down:
 
                         //update direction label
                         direction_label.Text = "Direction: DOWN";
@@ -162,7 +162,7 @@ public class squarepathuserinterface : Form
                         }
                         break;
 
-                  case direction_indicator.left:
+                  case current_direction.left:
 
                         //update direction label
                         direction_label.Text = "Direction: LEFT";
@@ -177,7 +177,7 @@ public class squarepathuserinterface : Form
 
                         break;
 
-                  case direction_indicator.up:
+                  case current_direction.up:
 
                         //update direction label
                         direction_label.Text = "Direction: UP";
@@ -192,7 +192,7 @@ public class squarepathuserinterface : Form
 
                         break;
 
-                  case direction_indicator.right:
+                  case current_direction.right:
 
                         //update direction label
                         direction_label.Text = "Direction: RIGHT";
