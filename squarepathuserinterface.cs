@@ -158,7 +158,7 @@ public class squarepathuserinterface : Form
 
                         //check if circle reached the bottom of the rectangle
                         if(y_pos == 600){
-                              direction_indicator = direction_indicator.left;
+                              direction_indicator = current_direction.left;
                         }
                         break;
 
@@ -172,7 +172,7 @@ public class squarepathuserinterface : Form
 
                         //check if circle reached the left side of the rectangle
                         if(x_pos == 900){
-                              direction_indicator = direction_indicator.up;
+                              direction_indicator = current_direction.up;
                         }
 
                         break;
