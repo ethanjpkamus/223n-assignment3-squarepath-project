@@ -39,8 +39,8 @@ public class squarepathuserinterface : Form
       /* The clock that refreshes the ui will only have one statement in
        * it the methods passed to the event handler which is Invalidate();
        */
-      private static System.Timers.Timer ui_clock = new Systems.Timers.Timer();
-      private static System.Timers.Timer circle_clock = new Systems.Timers.Timer();
+      private static System.Timers.Timer ui_clock = new System.Timers.Timer();
+      private static System.Timers.Timer circle_clock = new System.Timers.Timer();
 
       private Size maximum_window_size = new Size(1500,1000);
       private Size minimum_window_size = new Size(1500,1000);
@@ -158,7 +158,7 @@ public class squarepathuserinterface : Form
 
                         //check if circle reached the bottom of the rectangle
                         if(y_pos == 600){
-                              current_direction = direction_indicator.left;
+                              direction_indicator = direction_indicator.left;
                         }
                         break;
 
@@ -172,7 +172,7 @@ public class squarepathuserinterface : Form
 
                         //check if circle reached the left side of the rectangle
                         if(x_pos == 900){
-                              current_direction = direction_indicator.up;
+                              direction_indicator = direction_indicator.up;
                         }
 
                         break;
