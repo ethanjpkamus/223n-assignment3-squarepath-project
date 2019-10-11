@@ -11,7 +11,7 @@ echo "Compile squarepathuserinterface.cs:"
 mcs -target:library -r:System.Drawing.dll -r:System.Windows.Forms.dll -out:squarepathuserinterface.dll squarepathuserinterface.cs
 
 echo "Compile and link squarepathmain.cs:"
-mcs -r:System -r:System.Windows.Forms -r:straight-line.dll -out:squarepathmain.exe squarepathmain.cs
+mcs -r:System -r:System.Windows.Forms -r:squarepathuserinterface.dll -out:squarepathmain.exe squarepathmain.cs
 
 echo "Run the program Straight Line Travel"
 ./squarepathmain.exe
