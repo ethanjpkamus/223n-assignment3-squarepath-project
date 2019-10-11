@@ -58,7 +58,7 @@ public class squarepathuserinterface : Form
 
             //Timer Intervals
             ui_clock.Interval = 33; //roughly 30 Hz
-            ui_clock.Enabled = false;
+            ui_clock.Enabled = true;
             ui_clock.AutoReset = true;
 
             circle_clock.Interval = 17; //roughly 60 Hz
@@ -201,17 +201,19 @@ public class squarepathuserinterface : Form
                         x_pos++;
 
                         //check if circle is back at origin
-                        if(y_pos == 1400){
-                              direction_indicator = current_direction.still; 
+                        if(x_pos == 1400){
+                              direction_indicator = current_direction.still;
                         }
 
 
                         break;
-                  case direction_indicator.still:
+                  case current_direction.still:
 
                         direction_label.Text = "Direction: STILL";
                         circle_clock.Enabled = false;
                         color_indicator = current_color.gold;
+
+                        play_pause_button.Text = "Go";
 
                         break;
             } //end of switch statement
