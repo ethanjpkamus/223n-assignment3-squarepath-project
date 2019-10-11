@@ -187,7 +187,7 @@ public class squarepathuserinterface : Form
 
                         //check if circle is at top of rectangle
                         if(y_pos == 300){
-                              direction_label = current_direction.right;
+                              direction_indicator = current_direction.right;
                         }
 
                         break;
@@ -202,7 +202,7 @@ public class squarepathuserinterface : Form
 
                         //check if circle is back at origin
                         if(y_pos == 1400){
-
+                              direction_indicator = current_direction.still; 
                         }
 
 
