@@ -61,7 +61,7 @@ public class squarepathuserinterface : Form
             ui_clock.Enabled = true;
             ui_clock.AutoReset = true;
 
-            circle_clock.Interval = 17; //roughly 60 Hz
+            circle_clock.Interval = 33; //roughly 30 Hz
             circle_clock.Enabled = false;
             circle_clock.AutoReset = true;
 
@@ -154,7 +154,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: DOWN";
 
                         //do math
-                        y_pos++;
+                        y_pos + 2;
 
                         //check if circle reached the bottom of the rectangle
                         if(y_pos == 600){
@@ -168,7 +168,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: LEFT";
 
                         //do math
-                        x_pos--;
+                        x_pos - 2;
 
                         //check if circle reached the left side of the rectangle
                         if(x_pos == 900){
@@ -183,7 +183,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: UP";
 
                         //do math
-                        y_pos--;
+                        y_pos - 2;
 
                         //check if circle is at top of rectangle
                         if(y_pos == 300){
@@ -198,7 +198,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: RIGHT";
 
                         //do math
-                        x_pos++;
+                        x_pos + 2;
 
                         //check if circle is back at origin
                         if(x_pos == 1400){
@@ -207,6 +207,7 @@ public class squarepathuserinterface : Form
 
 
                         break;
+                        
                   case current_direction.still:
 
                         direction_label.Text = "Direction: STILL";
