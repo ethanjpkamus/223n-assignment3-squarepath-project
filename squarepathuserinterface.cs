@@ -223,7 +223,8 @@ public class squarepathuserinterface : Form
 
       protected void update_play_pause(Object o, EventArgs e){
 
-            circle_clock.Enabled = !circle_clock.Enabled;
+            bool opposite = !circle_clock.Enabled;
+            circle_clock.Enabled = opposite;
 
             if(circle_clock.Enabled){
                   play_pause_button.Text = "Pause";
