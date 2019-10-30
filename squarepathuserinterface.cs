@@ -154,7 +154,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: DOWN";
 
                         //do math
-                        y_pos + 2;
+                        y_pos += 2;
 
                         //check if circle reached the bottom of the rectangle
                         if(y_pos == 600){
@@ -168,7 +168,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: LEFT";
 
                         //do math
-                        x_pos - 2;
+                        x_pos -= 2;
 
                         //check if circle reached the left side of the rectangle
                         if(x_pos == 900){
@@ -183,7 +183,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: UP";
 
                         //do math
-                        y_pos - 2;
+                        y_pos -= 2;
 
                         //check if circle is at top of rectangle
                         if(y_pos == 300){
@@ -198,7 +198,7 @@ public class squarepathuserinterface : Form
                         direction_label.Text = "Direction: RIGHT";
 
                         //do math
-                        x_pos + 2;
+                        x_pos += 2;
 
                         //check if circle is back at origin
                         if(x_pos == 1400){
@@ -214,7 +214,7 @@ public class squarepathuserinterface : Form
                         circle_clock.Enabled = false;
                         color_indicator = current_color.gold;
 
-                        play_pause_button.Text = "Go";
+                        play_pause_button.Text = "Go!";
 
                         break;
             } //end of switch statement
